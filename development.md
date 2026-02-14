@@ -147,6 +147,8 @@ NODE_ENV=development
 CORS_ORIGINS="http://localhost:5173,https://bingo.string.sg"
 ```
 
+**Note:** For local PostgreSQL development, you may need to adjust the `sslmode` parameter. Use `sslmode=disable` or omit it entirely if your local PostgreSQL instance doesn't have SSL configured.
+
 ### 5. Set Up Database
 
 ```bash
@@ -514,7 +516,7 @@ Since the project doesn't have automated tests currently, focus on manual testin
 ### Future Testing Improvements
 
 Consider adding:
-- Unit tests with Vitest (recommended for Vite projects) or Jest
+- Unit tests with Vitest (recommended for Vite projects due to shared configuration and faster test execution) or Jest
 - Integration tests for API endpoints
 - E2E tests with Playwright (already in dependencies)
 - Automated visual regression tests
