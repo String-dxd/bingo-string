@@ -82,7 +82,7 @@ Before you begin, ensure you have the following installed:
 - **Node.js**: v18.x or higher
 - **npm**: v9.x or higher
 - **Git**: Latest version
-- **PostgreSQL**: v14.x or higher (or NeonDB account)
+- **PostgreSQL**: v15.x or higher (or NeonDB account)
 - **Google Cloud Console Access**: For OAuth credentials
 
 ## Initial Setup
@@ -110,7 +110,7 @@ cd ..
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project or select an existing one
-3. Enable the Google+ API
+3. Enable the Google Identity Services API
 4. Create OAuth 2.0 credentials:
    - Application type: Web application
    - Authorized JavaScript origins: `http://localhost:5173`, `https://bingo.string.sg`
@@ -514,7 +514,7 @@ Since the project doesn't have automated tests currently, focus on manual testin
 ### Future Testing Improvements
 
 Consider adding:
-- Unit tests with Jest or Vitest
+- Unit tests with Vitest (recommended for Vite projects) or Jest
 - Integration tests for API endpoints
 - E2E tests with Playwright (already in dependencies)
 - Automated visual regression tests
