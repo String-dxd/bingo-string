@@ -377,15 +377,12 @@ For local development:
 VITE_API_BASE_URL=http://localhost:3000/api
 ```
 
-For staging:
-```env
-VITE_API_BASE_URL=https://staging-api.bingo.string.sg/api
-```
+For staging and production, update the runtime configuration files rather than a Vite environment variable:
 
-For production:
-```env
-VITE_API_BASE_URL=/api
-```
+- Set `apiBaseUrl` in `public/config-staging.json` to the deployed staging API URL.
+- Set `apiBaseUrl` in `public/config-production.json` to the deployed production API URL (currently `/api`).
+
+`VITE_API_BASE_URL` is used only for local development.
 
 ## Development Workflow
 
