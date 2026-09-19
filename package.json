@@ -24,9 +24,6 @@
     },
     "author": "String Team",
     "license": "MIT",
-    "overrides": {
-        "rollup": "4.59.0"
-    },
     "dependencies": {
         "@playwright/test": "^1.56.0",
         "@prisma/client": "^5.7.1",
@@ -46,6 +43,7 @@
         "@types/morgan": "^1.9.9",
         "@types/node": "^20.10.5",
         "gh-pages": "^6.0.0",
-        "prisma": "^5.7.1"
+        "prisma": "^5.7.1",
+        "rollup": "4.59.0"
     }
 }
