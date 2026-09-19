@@ -38,7 +38,7 @@
     "google-oauth"
   ],
   "engines": {
-    "node": ">=18"
+    "node": "^18.0.0 || ^22.0.0"
   },
   "author": "String Team",
   "license": "MIT"
