@@ -433,7 +433,7 @@ For staging and production, update the runtime configuration files rather than a
 
 ### Code Style Guidelines
 
-- **JavaScript**: Use ES6+ features, consistent indentation (2 spaces)
+- **JavaScript**: Use ES6+ features and consistent indentation (4 spaces)
 - **TypeScript**: Use strict mode, define types for parameters and return values
 - **CSS**: Use BEM naming convention where applicable
 - **Commits**: Use conventional commit messages (feat:, fix:, docs:, etc.)
