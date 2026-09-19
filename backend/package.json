@@ -37,6 +37,9 @@
     "typescript",
     "google-oauth"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "author": "String Team",
   "license": "MIT"
 }

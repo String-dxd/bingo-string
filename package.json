@@ -19,6 +19,9 @@
         "interactive",
         "challenges"
     ],
+    "engines": {
+        "node": ">=18"
+    },
     "author": "String Team",
     "license": "MIT",
     "dependencies": {
