@@ -115,14 +115,14 @@ or update a session; these endpoints are not an administrative analytics API.
 
 This is a source-code review, not confirmation of production database migrations
 or successful Google Analytics delivery. The original "Better analytics" issue
-remains relevant for measurement quality and reporting, but Phase 1 should not be
-implemented again.
+remains relevant for tracking correctness and reporting. Phase 1 has an existing
+implementation to repair, not a missing system to build again.
 
 ### Existing coverage
 
 | Original requirement | Current implementation |
 | --- | --- |
-| Phase 1: default session storage, API, frontend integration | Present: `DefaultGameSession`, the `20251208012308_add_default_game_sessions` migration, the endpoints above, and `BingoApp.initializeDefaultGameSession()`. A UUID is persisted under `defaultBingoSession` in localStorage and reused on reload. |
+| Phase 1: default session storage, API, frontend integration | Present in source: `DefaultGameSession`, the `20251208012308_add_default_game_sessions` migration, the endpoints above, and `BingoApp.initializeDefaultGameSession()`. A UUID is persisted under `defaultBingoSession` in localStorage and reused on reload, but a missing import blocks session creation (see below). |
 | Phase 2: game metrics | Partial: the database holds the latest cell indices and bingo state; GA event calls exist for `default_game_start`, `default_cell_completed`, and `default_game_completed`. No challenge-level aggregates exist. |
 | Phase 2: session and performance metrics | Creation/update/completion timestamps exist, but no explicit active-duration, interaction-history, drop-off, load-time, or error-rate instrumentation exists. Console/server logs are not an error-rate metric. |
 | Phase 3: analytics dashboard | Not implemented for default games. The existing dashboard shows custom-game results to their creator, not site-wide default-game statistics or trends. |
@@ -133,6 +133,11 @@ does not. Database tracking operates independently of GA.
 
 ### Measurement limitations to resolve first
 
+- **Blocked session creation:** `createDefaultGameSession()` references `CONFIG`,
+  but the app imports only `getConfig` from the configuration module. The caught
+  `ReferenceError` prevents the create request from being sent, so a new client's
+  later progress requests have no database session to update. The following
+  measurement issues also need addressing once creation works.
 - **Missing starts:** `initializeDefaultGameSession()` attempts `default_game_start`
   before `setupAnalytics()` defines `gtag`, so the event is skipped on a normal
   fresh page load.
@@ -147,8 +152,8 @@ does not. Database tracking operates independently of GA.
   emit `default_game_completed` again and replace `completedAt`. Completion means
   a bingo line, not every cell completed, and the timestamp is not reliably the
   first bingo.
-- **Unreliable challenge denominators:** tracking reports `CONFIG.GRID.size`
-  (currently 3), while default `setupGrid()` renders its default size of 5.
+- **Unreliable challenge denominators:** the intended tracking payload uses
+  `CONFIG.GRID.size` (currently 3), while default `setupGrid()` renders size 5.
   Progress and GA labels use cell indices, not the CSV challenge IDs; filenames
   alone do not version challenge content.
 - **No active-time or drop-off evidence:** `updatedAt - createdAt` measures elapsed
@@ -173,7 +178,8 @@ free text, or raw session IDs to GA or aggregate reports.
 ### Recommended follow-up work, in order
 
 1. **Tracking correctness and privacy contract (next implementation issue).**
-   Define a play as a new/reset/expired board, with a documented inactivity
+   Restore the missing configuration import and verify session creation through
+   the API and database. Define a play as a new/reset/expired board, with an inactivity
    timeout; reload within that window resumes it. Rotate on challenge-set/version
    changes. Initialize permitted GA tracking before emitting events; count start
    and first bingo once per play. Synchronize removal/reset/reload state, preserve
@@ -202,7 +208,7 @@ free text, or raw session IDs to GA or aggregate reports.
    **Acceptance:** idle/background tabs do not inflate active time, absent unload
    events do not imply completion, and tests verify redaction and failure isolation.
 
-Treat Phase 1 as implemented but needing verification, and split Phases 2–3 into
+Treat Phase 1 as present but blocked, and split its repair and Phases 2–3 into
 these follow-ups rather than closing them as delivered. This review changes
 documentation only; it does not fix the measurement gaps or add telemetry.
 
