@@ -423,7 +423,7 @@ For staging and production, update the runtime configuration files rather than a
 
 2. Make commits with clear messages:
    ```bash
-   git commit -m "Add re-center button for mobile zoom (fixes #58)"
+   git commit -m "feat: add re-center button for mobile zoom (fixes #58)"
    ```
 
 3. Push and create a pull request:
