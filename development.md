@@ -278,10 +278,15 @@ backend/
 - `DELETE /api/games/:id` - Delete game (owner only)
 - `GET /api/games/:id/play` - Get game for playing (public)
 
-#### Sessions
-- `GET /api/sessions/:gameId` - Get user's session for a game
-- `POST /api/sessions` - Create/update game session
-- `PUT /api/sessions/:id` - Update session progress
+#### Custom Game Sessions
+- `POST /api/games/:id/join` - Create or resume a custom-game session
+- `POST /api/games/:id/progress` - Update custom-game session progress
+- `GET /api/games/:id/results` - Get game results (authenticated owner only)
+
+#### Default Game Sessions
+- `POST /api/default-sessions` - Create or resume a default-game session
+- `POST /api/default-sessions/:sessionId/progress` - Update default-game progress
+- `GET /api/default-sessions/:sessionId` - Get a default-game session
 
 #### Health Check
 - `GET /health` - Server health status
