@@ -312,21 +312,24 @@ This compiles TypeScript to JavaScript in `dist/`.
 
 ### Schema Overview
 
-The database includes three main tables:
+The database includes four main tables:
 
 #### Users
 - Stores user information from Google OAuth
-- Unique constraint on email and googleId
+- Unique constraints on email and googleId
 
 #### Games
 - Stores custom bingo games created by users
-- Contains challenges as JSON array (25 items)
-- Has public/private visibility flag
+- Stores challenges as JSON together with the selected grid size
+- Has a public/private visibility flag
 
 #### GameSessions
-- Tracks individual game play sessions
+- Tracks custom-game sessions by game, session ID, and player name
 - Stores progress as JSON
-- Links to game and user
+
+#### DefaultGameSessions
+- Tracks anonymous sessions for pre-configured challenge sets
+- Stores grid size and progress as JSON
 
 ### Common Database Tasks
 
