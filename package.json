@@ -20,10 +20,13 @@
         "challenges"
     ],
     "engines": {
-        "node": "^18.0.0 || ^20.0.0 || >=22.20.0 <23"
+        "node": "^18.0.0 || ^20.0.0 || ^22.0.0"
     },
     "author": "String Team",
     "license": "MIT",
+    "overrides": {
+        "rollup": "4.59.0"
+    },
     "dependencies": {
         "@playwright/test": "^1.56.0",
         "@prisma/client": "^5.7.1",
