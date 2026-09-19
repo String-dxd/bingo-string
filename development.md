@@ -24,7 +24,7 @@ Welcome to the String Bingo development guide! This document provides comprehens
 String Bingo is an interactive web-based bingo game developed for the String community. Users can play pre-configured bingo games or create their own custom bingo boards with personalized challenges.
 
 **Key Features:**
-- Interactive 5x5 bingo grid with customizable challenges
+- Interactive 3x3 and 5x5 bingo grids with customizable challenges
 - Google OAuth authentication for game creation and saving
 - Mobile-responsive design with touch support
 - Camera integration for photo challenges
