@@ -249,15 +249,12 @@ backend/
 │   ├── index.ts          # Main server entry point
 │   ├── routes/           # API route handlers
 │   │   ├── auth.ts       # Authentication endpoints
-│   │   ├── games.ts      # Game CRUD operations
-│   │   └── sessions.ts   # Game session management
-│   ├── middleware/       # Express middleware
-│   │   ├── auth.ts       # JWT validation
-│   │   ├── cors.ts       # CORS configuration
-│   │   └── errorHandler.ts
-│   └── lib/              # Utility functions
-│       ├── prisma.ts     # Prisma client
-│       └── google.ts     # Google OAuth validation
+│   │   ├── games.ts      # Game and custom-session operations
+│   │   └── defaultSessions.ts # Default-game session operations
+│   ├── middleware/
+│   │   └── auth.ts       # Google token validation
+│   └── lib/
+│       └── prisma.ts     # Prisma client
 ├── prisma/
 │   ├── schema.prisma     # Database schema
 │   └── migrations/       # Migration files
