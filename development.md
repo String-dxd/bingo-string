@@ -205,10 +205,11 @@ This starts the Vite development server at `http://localhost:5173` with:
 
 #### Working with the Bingo Grid
 
-The bingo grid is managed by `bingoGrid.js`:
-- Grid state is stored in memory and synced to backend
-- Cell clicks toggle completion state
-- Win detection checks for bingo patterns
+The bingo grid is managed by `bingoGrid.js` and coordinated by `app.js`:
+- Grid completion state is held in memory, while captured images are stored in `localStorage`
+- Capturing an image marks a cell complete and posts progress to the backend
+- Clicking an incomplete cell opens the camera/upload flow; removing its image marks it incomplete
+- Win detection checks rows, columns, and diagonals for bingo patterns
 
 #### Mobile Considerations
 
