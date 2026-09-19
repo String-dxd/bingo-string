@@ -471,15 +471,11 @@ The backend API is deployed as Vercel serverless functions.
 
 ### Environment-Specific Deployments
 
-**Staging**:
-- Branch: `staging`
-- URL: `https://staging.bingo.string.sg`
-- Database: Staging database
+The GitHub Pages workflow deploys pushes from both `main` and `staging` to the same `gh-pages` target with `force_orphan: true`, so only the most recently deployed branch is active.
 
-**Production**:
-- Branch: `main`
-- URL: `https://bingo.string.sg`
-- Database: Production database
+- `staging` deployments publish the frontend with the `staging.bingo.string.sg` CNAME
+- `main` deployments publish the frontend with the `bingo.string.sg` CNAME
+- Each new deployment replaces the previously published branch content and domain mapping
 
 ## Testing
 
