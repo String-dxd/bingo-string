@@ -1,0 +1,8 @@
+{
+  "environment": "production",
+  "googleClientId": "124864716521-psk1222tjg1uq20kh5q8b4ovlipt1sgl.apps.googleusercontent.com",
+  "googleAnalyticsId": "G-NM42QYT2MD",
+  "apiBaseUrl": "/api",
+  "debugMode": false,
+  "logLevel": "error"
+}
